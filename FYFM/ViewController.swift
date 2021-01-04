@@ -120,10 +120,8 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UI
             destination.imageData = imageData
         }
         
-        
-        
-        destination.text = film?.title ?? ""
-            
+        destination.filmTitle = film?.title ?? "no title"
+        destination.overview = film?.overview ?? "no overview"
         
     }
 }

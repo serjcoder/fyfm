@@ -15,12 +15,14 @@ class FillmViewController: UIViewController {
     }
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var mainPoster: UIImageView!
-    var text = String()
+    @IBOutlet weak var overviewText: UILabel!
+    var overview = String()
+    var filmTitle = String()
     var imageData = Data()
     override func viewDidLoad() {
         super.viewDidLoad()
-        topText.text = text
+        topText.text = filmTitle
+        overviewText.text = overview
         mainPoster.image = UIImage(data: imageData)
-        print("переданн текст \(text)")
     }
 }

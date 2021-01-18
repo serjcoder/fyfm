@@ -8,6 +8,7 @@ import Foundation
 
 struct Film:Decodable {
     var posterPath:String?
+    var posterData:Data?
     var adult:Bool?
     var overview:String?
     var releaseDate:String?
@@ -24,6 +25,7 @@ struct Film:Decodable {
     
     enum CodingKeys:  String, CodingKey {
         case posterPath = "poster_path"
+        case posterData
         case adult
         case overview
         case releaseDate = "release_date"

@@ -15,8 +15,8 @@ class NetWorkDataFetcher {
                 
             case .success(let data):
                 do {
-                    let traks = try JSONDecoder().decode(FilmsListResponse.self, from:data)
-                    responce(traks)
+                    let data = try JSONDecoder().decode(FilmsListResponse.self, from:data)
+                    responce(data)
                 } catch let jsonError {
                     print("Fail to decode: \(jsonError)")
                     responce(nil)
@@ -26,5 +26,13 @@ class NetWorkDataFetcher {
                 responce(nil)
             }
         }
+    }
+    
+    func imageLoad(posterPath:String?) -> Data {
+        var posterPathUrl = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
+        if let optionlaPosterPath = posterPath   {
+            posterPathUrl = "https://image.tmdb.org/t/p/w500/" + optionlaPosterPath
+        }
+        return try! Data(contentsOf: URL(string: posterPathUrl)! )
     }
 }

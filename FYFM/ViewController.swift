@@ -29,14 +29,27 @@ class ViewController: UIViewController {
     
     func searchProcess(searchText:String) {
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=1"
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(_) in
-            
+        
+//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(_) in
             self.networkDataFetcher.fetchTraks(urlString: urlString) { (searchResponse) in
             guard let searchResponse =  searchResponse else { return }
-            self.filmsListResponse = searchResponse
-            self.collectionView.reloadData()
+                self.filmsListResponse = searchResponse
+                if let responce = self.filmsListResponse {
+                    var i = 0
+                    for  film in responce.results {
+                        self.filmsListResponse?.results[i].posterData = self.networkDataFetcher.imageLoad(posterPath: film.posterPath)
+                        i=i+1
+                        if i == (self.filmsListResponse?.results.count)! {
+                            self.collectionView.reloadData()
+                        }
+                    }
+                }
             }
-        })
+//        })
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.collectionView.reloadData()
     }
     
     @objc func dismissKeyboard() {
@@ -50,6 +63,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UI
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filmsListResponse?.results.count ?? 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (self.view.frame.size.width - 50) / 3 //some width
             let height = (width * 1.5)+40 //ratio
@@ -65,20 +79,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UI
         cell.backgroundColor = UIColor.darkGray // make cell more visible in our example project
         cell.layer.borderColor = UIColor.black.cgColor
         
-        
-        // убрать это отсюда
-        var posterPathUrl = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
-        if let posterPathSting = film?.posterPath {
-            posterPathUrl = "https://image.tmdb.org/t/p/w500/" + posterPathSting
-        }
-        
-        
-        let data = try? Data(contentsOf: URL(string: posterPathUrl)! )
-        
-        if let imageData = data {
-            cell.myImage.image = UIImage(data: imageData)
-        }
-        
+        cell.myImage.image = UIImage(data: (film?.posterData)!)
         cell.myLable.text = film?.title
         return cell
     }
@@ -106,20 +107,9 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UI
         guard segue.identifier == "showFilmSegue" else { return }
         guard let destination = segue.destination as? FillmViewController else { return }
         
-        
         let film = filmsListResponse?.results[someIndex]
-        var posterPathUrl = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
-        if let posterPathSting = film?.posterPath {
-            posterPathUrl = "https://image.tmdb.org/t/p/w500/" + posterPathSting
-        }
         
-        
-        let data = try? Data(contentsOf: URL(string: posterPathUrl)! )
-        
-        if let imageData = data {
-            destination.imageData = imageData
-        }
-        
+        destination.imageData = (film?.posterData)!
         destination.filmTitle = film?.title ?? "no title"
         destination.overview = film?.overview ?? "no overview"
         
@@ -130,8 +120,11 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.dismissKeyboard()
+        if let text = self.searchBar.text {
+            searchProcess(searchText: text)
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchProcess(searchText: searchText)
+//        searchProcess(searchText: searchText)
     }
 }

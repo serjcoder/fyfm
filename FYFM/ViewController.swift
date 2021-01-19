@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UIAlertViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var lastestButton: UIButton!
@@ -21,6 +21,10 @@ class ViewController: UIViewController {
     var filmsListResponse: FilmsListResponse? = nil
     var someIndex = Int()
     
+    let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
+            
+
+    
     private var timer: Timer? = nil
     
     override func viewDidLoad() {
@@ -31,19 +35,21 @@ class ViewController: UIViewController {
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=1"
         
 //        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(_) in
-            self.networkDataFetcher.fetchTraks(urlString: urlString) { (searchResponse) in
+        self.networkDataFetcher.fetchTraks(urlString: urlString) { [self] (searchResponse) in
             guard let searchResponse =  searchResponse else { return }
                 self.filmsListResponse = searchResponse
-                if let responce = self.filmsListResponse {
-                    var i = 0
-                    for  film in responce.results {
-                        self.filmsListResponse?.results[i].posterData = self.networkDataFetcher.imageLoad(posterPath: film.posterPath)
-                        i=i+1
-                        if i == (self.filmsListResponse?.results.count)! {
-                            self.collectionView.reloadData()
+                if let count = self.filmsListResponse?.totalResults, count > 0 {
+                    if let responce = self.filmsListResponse {
+                        var i = 0
+                        for  film in responce.results {
+                            self.filmsListResponse?.results[i].posterData = self.networkDataFetcher.imageLoad(posterPath: film.posterPath)
+                            i=i+1
+                            if i == (self.filmsListResponse?.results.count)! {
+                                self.collectionView.reloadData()
+                            }
                         }
                     }
-                }
+                } else { self.present(alertController, animated: true, completion: nil) }
             }
 //        })
     }

@@ -21,8 +21,17 @@ class ViewController: UIViewController,UIAlertViewDelegate {
     var filmsListResponse: FilmsListResponse? = nil
     var someIndex = Int()
     
-    let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
-            
+    
+    
+    
+    func alert(){
+        let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+              print("Handle Ok logic here")
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+    
 
     
     private var timer: Timer? = nil
@@ -34,13 +43,14 @@ class ViewController: UIViewController,UIAlertViewDelegate {
     func searchProcess(searchText:String) {
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=1"
         
-//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(_) in
         self.networkDataFetcher.fetchTraks(urlString: urlString) { [self] (searchResponse) in
             guard let searchResponse =  searchResponse else { return }
                 self.filmsListResponse = searchResponse
+                
                 if let count = self.filmsListResponse?.totalResults, count > 0 {
                     if let responce = self.filmsListResponse {
                         var i = 0
+                        
                         for  film in responce.results {
                             self.filmsListResponse?.results[i].posterData = self.networkDataFetcher.imageLoad(posterPath: film.posterPath)
                             i=i+1
@@ -49,9 +59,12 @@ class ViewController: UIViewController,UIAlertViewDelegate {
                             }
                         }
                     }
-                } else { self.present(alertController, animated: true, completion: nil) }
+                } else {
+                    self.alert()
+                    self.collectionView.reloadData()
+                }
             }
-//        })
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -126,11 +139,10 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.dismissKeyboard()
-        if let text = self.searchBar.text {
-            searchProcess(searchText: text)
-        }
+        let text:String =  self.searchBar.text?.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil) ?? " "
+        searchProcess(searchText: text)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        searchProcess(searchText: searchText)
+
     }
 }

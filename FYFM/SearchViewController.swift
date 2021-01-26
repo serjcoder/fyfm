@@ -8,7 +8,6 @@ import UIKit
 
 class SearchViewController: UIViewController,UIAlertViewDelegate {
     
-    @IBOutlet var setView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -73,32 +72,32 @@ class SearchViewController: UIViewController,UIAlertViewDelegate {
     }
 }
 
-extension SearchViewController: UICollectionViewDataSource,UICollectionViewDelegate {
-    
+extension SearchViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filmsListResponse?.results.count ?? 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.setView.frame.size.width - 50) / 3
+        let width = (self.view.frame.size.width - 50) / 3
             let height = (width * 1.5)+40
-            print ("frame.size.width = \(self.setView.frame.size.width) cell width = \(width)")
+            print ("frame.size.width = \(self.view.frame.size.width) cell width = \(width)")
             return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         let film = filmsListResponse?.results[indexPath.row]
-        
+
         cell.myLable.textColor = UIColor.black
         cell.backgroundColor = UIColor.darkGray // make cell more visible in our example project
         cell.layer.borderColor = UIColor.black.cgColor
-        
+
         cell.myImage.image = UIImage(data: (film?.posterData)!)
         cell.myLable.text = film?.title
         return cell
     }
-    
+
     // change background color when user touches cell and set someIndex
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
@@ -107,27 +106,27 @@ extension SearchViewController: UICollectionViewDataSource,UICollectionViewDeleg
     }
     // change background color back when user releases touch
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-      
-        
+
+
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor.blue
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
-        
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showFilmSegue" else { return }
         guard let destination = segue.destination as? FillmViewController else { return }
-        
+
         let film = filmsListResponse?.results[someIndex]
-        
+
         destination.imageData = (film?.posterData)!
         destination.filmTitle = film?.title ?? "no title"
         destination.overview = film?.overview ?? "no overview"
-        
+
     }
 }
 

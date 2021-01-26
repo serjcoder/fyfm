@@ -1,22 +1,17 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  FYFM
 //
 //  Created by Сергей on 07.12.2020.
 //
 import UIKit
 
-class ViewController: UIViewController,UIAlertViewDelegate {
+class SearchViewController: UIViewController,UIAlertViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var lastestButton: UIButton!
-    @IBOutlet weak var nowPlayingButton: UIButton!
-    @IBOutlet weak var popularButton: UIButton!
-    @IBOutlet weak var topRatedButton: UIButton!
-    @IBOutlet weak var upcomingButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    let apiKey = "e7d6c37e59198290cfb7b07ee39bec9f"
+    public let apiKey = "e7d6c37e59198290cfb7b07ee39bec9f"
     let networkDataFetcher = NetWorkDataFetcher()
     var filmsListResponse: FilmsListResponse? = nil
     var someIndex = Int()
@@ -25,8 +20,8 @@ class ViewController: UIViewController,UIAlertViewDelegate {
     
     
     func alert(){
-        let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        let alertController = UIAlertController(title: "ЛЕРА", message: "Улыбнись и не плачь", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Да, мой Господин!", style: .default, handler: { (action: UIAlertAction!) in
               print("Handle Ok logic here")
         }))
         present(alertController, animated: true, completion: nil)
@@ -71,13 +66,13 @@ class ViewController: UIViewController,UIAlertViewDelegate {
         self.collectionView.reloadData()
     }
     
+    
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
 }
 
-extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filmsListResponse?.results.count ?? 0
@@ -135,7 +130,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate,UI
     }
 }
 
-extension ViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.dismissKeyboard()
@@ -143,6 +138,6 @@ extension ViewController: UISearchBarDelegate {
         searchProcess(searchText: text)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        print(self.searchBar.text)
     }
 }

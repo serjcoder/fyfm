@@ -10,9 +10,10 @@
 		871F4BAC25829887003ADC2A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F4BAB25829887003ADC2A /* NetworkService.swift */; };
 		871F4BAF258298FF003ADC2A /* NetWorkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F4BAE258298FF003ADC2A /* NetWorkDataFetcher.swift */; };
 		871F4BB225829970003ADC2A /* FIlmStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F4BB125829970003ADC2A /* FIlmStruct.swift */; };
+		874F74D325BF356500F06C2A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F74D225BF356500F06C2A /* HomeViewController.swift */; };
 		87CF18E0257E97470068637D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF18DF257E97470068637D /* AppDelegate.swift */; };
 		87CF18E2257E97470068637D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF18E1257E97470068637D /* SceneDelegate.swift */; };
-		87CF18E4257E97470068637D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF18E3257E97470068637D /* ViewController.swift */; };
+		87CF18E4257E97470068637D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF18E3257E97470068637D /* SearchViewController.swift */; };
 		87CF18E7257E97470068637D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87CF18E5257E97470068637D /* Main.storyboard */; };
 		87CF18E9257E974B0068637D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87CF18E8257E974B0068637D /* Assets.xcassets */; };
 		87CF18EC257E974B0068637D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87CF18EA257E974B0068637D /* LaunchScreen.storyboard */; };
@@ -25,10 +26,11 @@
 		871F4BAB25829887003ADC2A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		871F4BAE258298FF003ADC2A /* NetWorkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkDataFetcher.swift; sourceTree = "<group>"; };
 		871F4BB125829970003ADC2A /* FIlmStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIlmStruct.swift; sourceTree = "<group>"; };
+		874F74D225BF356500F06C2A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		87CF18DC257E97470068637D /* FYFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FYFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CF18DF257E97470068637D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87CF18E1257E97470068637D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		87CF18E3257E97470068637D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87CF18E3257E97470068637D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		87CF18E6257E97470068637D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87CF18E8257E974B0068637D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87CF18EB257E974B0068637D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,7 +73,8 @@
 			children = (
 				87CF18DF257E97470068637D /* AppDelegate.swift */,
 				87CF18E1257E97470068637D /* SceneDelegate.swift */,
-				87CF18E3257E97470068637D /* ViewController.swift */,
+				87CF18E3257E97470068637D /* SearchViewController.swift */,
+				874F74D225BF356500F06C2A /* HomeViewController.swift */,
 				87F7D0EE2592612500B1B66B /* FillmViewController.swift */,
 				87CF1902258135440068637D /* CollectionViewCell.swift */,
 				871F4BAB25829887003ADC2A /* NetworkService.swift */,
@@ -166,9 +169,10 @@
 			files = (
 				871F4BAF258298FF003ADC2A /* NetWorkDataFetcher.swift in Sources */,
 				871F4BAC25829887003ADC2A /* NetworkService.swift in Sources */,
-				87CF18E4257E97470068637D /* ViewController.swift in Sources */,
+				87CF18E4257E97470068637D /* SearchViewController.swift in Sources */,
 				87CF18E0257E97470068637D /* AppDelegate.swift in Sources */,
 				871F4BB225829970003ADC2A /* FIlmStruct.swift in Sources */,
+				874F74D325BF356500F06C2A /* HomeViewController.swift in Sources */,
 				87CF1903258135440068637D /* CollectionViewCell.swift in Sources */,
 				87CF18E2257E97470068637D /* SceneDelegate.swift in Sources */,
 				87F7D0EF2592612600B1B66B /* FillmViewController.swift in Sources */,

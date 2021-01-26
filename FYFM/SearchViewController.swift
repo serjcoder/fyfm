@@ -8,6 +8,7 @@ import UIKit
 
 class SearchViewController: UIViewController,UIAlertViewDelegate {
     
+    @IBOutlet var setView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -31,9 +32,9 @@ class SearchViewController: UIViewController,UIAlertViewDelegate {
     
     private var timer: Timer? = nil
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
     
     func searchProcess(searchText:String) {
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=1"
@@ -79,9 +80,9 @@ extension SearchViewController: UICollectionViewDataSource,UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.size.width - 50) / 3 //some width
-            let height = (width * 1.5)+40 //ratio
-            print ("frame.size.width = \(self.view.frame.size.width) cell width = \(width)")
+        let width = (self.setView.frame.size.width - 50) / 3
+            let height = (width * 1.5)+40
+            print ("frame.size.width = \(self.setView.frame.size.width) cell width = \(width)")
             return CGSize(width: width, height: height)
     }
     
@@ -138,6 +139,6 @@ extension SearchViewController: UISearchBarDelegate {
         searchProcess(searchText: text)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(self.searchBar.text)
+        print(self.searchBar.text ?? "some text")
     }
 }

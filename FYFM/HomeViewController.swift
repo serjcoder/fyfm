@@ -9,11 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var topRatedImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     let homePageUrlString = ["/movie/top_rated","/movie/popular","/movie/latest","/movie/now_playing","/movie/upcoming"]
 
     

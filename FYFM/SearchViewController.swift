@@ -77,10 +77,15 @@ extension SearchViewController: UICollectionViewDataSource,UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filmsListResponse?.results.count ?? 0
     }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.size.width - 50) / 3
-            let height = (width * 1.5)+40
+        let width = ((self.view.frame.size.width) / 3) - 1
+            let height = (width * 1.5)+30
             print ("frame.size.width = \(self.view.frame.size.width) cell width = \(width)")
             return CGSize(width: width, height: height)
     }

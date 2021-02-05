@@ -5,29 +5,26 @@
 //  Created by Сергей on 07.12.2020.
 //
 import UIKit
-
+public let apiKey = "e7d6c37e59198290cfb7b07ee39bec9f"
 class SearchViewController: UIViewController,UIAlertViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    public let apiKey = "e7d6c37e59198290cfb7b07ee39bec9f"
+    
     let networkDataFetcher = NetWorkDataFetcher()
     var filmsListResponse: FilmsListResponse? = nil
     var someIndex = Int()
     
     
-    
-    
     func alert(){
-        let alertController = UIAlertController(title: "ЛЕРА", message: "Улыбнись и не плачь", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Да, мой Господин!", style: .default, handler: { (action: UIAlertAction!) in
+        let alertController = UIAlertController(title: "трабл", message: "хз шо за фильм", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ок, я попробую поискать иначе", style: .default, handler: { (action: UIAlertAction!) in
               print("Handle Ok logic here")
         }))
         present(alertController, animated: true, completion: nil)
     }
     
-
     
     private var timer: Timer? = nil
     
@@ -35,22 +32,37 @@ class SearchViewController: UIViewController,UIAlertViewDelegate {
 //        super.viewDidLoad()
 //    }
     
+    
     func searchProcess(searchText:String) {
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=1"
-        
         self.networkDataFetcher.fetchTraks(urlString: urlString) { [self] (searchResponse) in
             guard let searchResponse =  searchResponse else { return }
                 self.filmsListResponse = searchResponse
-                
                 if let count = self.filmsListResponse?.totalResults, count > 0 {
                     if let responce = self.filmsListResponse {
                         var i = 0
-                        
-                        for  film in responce.results {
-                            self.filmsListResponse?.results[i].posterData = self.networkDataFetcher.imageLoad(posterPath: film.posterPath)
+                        var imagesUrlArray: [String] = []
+                        for film in responce.results {
+                            var posterPathUrl = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
+                            if let optionlaPosterPath = film.posterPath   {
+                                posterPathUrl = "https://image.tmdb.org/t/p/w500/" + optionlaPosterPath
+                            }
+                            imagesUrlArray.append(posterPathUrl)
                             i=i+1
+                            
+                            
                             if i == (self.filmsListResponse?.results.count)! {
-                                self.collectionView.reloadData()
+                                var a = 0
+                                let imagesArray = self.networkDataFetcher.loadAllImages(images: imagesUrlArray)
+                                print(imagesArray)
+                                for var film in responce.results {
+                                    self.filmsListResponse?.results[a].posterData = imagesArray[a]
+                                    print(a, imagesArray[a])
+                                    a=a+1
+                                    if a == (self.filmsListResponse?.results.count)! {
+                                        self.collectionView.reloadData()
+                                    }
+                                }
                             }
                         }
                     }
@@ -59,11 +71,12 @@ class SearchViewController: UIViewController,UIAlertViewDelegate {
                     self.collectionView.reloadData()
                 }
             }
-
-    }
+        }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.collectionView.reloadData()
+        if (self.collectionView != nil) {
+            self.collectionView.reloadData()
+        }
     }
     
     

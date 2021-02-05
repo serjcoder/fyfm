@@ -20,6 +20,7 @@
 		87CF18F7257E9ECB0068637D /* icone.png in Resources */ = {isa = PBXBuildFile; fileRef = 87CF18F6257E9ECB0068637D /* icone.png */; };
 		87CF1903258135440068637D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF1902258135440068637D /* CollectionViewCell.swift */; };
 		87F7D0EF2592612600B1B66B /* FillmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F7D0EE2592612500B1B66B /* FillmViewController.swift */; };
+		87F8D69B25C32864000106B8 /* CollectionViewCellHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F8D69A25C32864000106B8 /* CollectionViewCellHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		87CF18F6257E9ECB0068637D /* icone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone.png; sourceTree = "<group>"; };
 		87CF1902258135440068637D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		87F7D0EE2592612500B1B66B /* FillmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillmViewController.swift; sourceTree = "<group>"; };
+		87F8D69A25C32864000106B8 /* CollectionViewCellHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				87CF18DF257E97470068637D /* AppDelegate.swift */,
 				87CF18E1257E97470068637D /* SceneDelegate.swift */,
 				87CF18E3257E97470068637D /* SearchViewController.swift */,
+				87F8D69A25C32864000106B8 /* CollectionViewCellHome.swift */,
 				874F74D225BF356500F06C2A /* HomeViewController.swift */,
 				87F7D0EE2592612500B1B66B /* FillmViewController.swift */,
 				87CF1902258135440068637D /* CollectionViewCell.swift */,
@@ -172,6 +175,7 @@
 				87CF18E4257E97470068637D /* SearchViewController.swift in Sources */,
 				87CF18E0257E97470068637D /* AppDelegate.swift in Sources */,
 				871F4BB225829970003ADC2A /* FIlmStruct.swift in Sources */,
+				87F8D69B25C32864000106B8 /* CollectionViewCellHome.swift in Sources */,
 				874F74D325BF356500F06C2A /* HomeViewController.swift in Sources */,
 				87CF1903258135440068637D /* CollectionViewCell.swift in Sources */,
 				87CF18E2257E97470068637D /* SceneDelegate.swift in Sources */,

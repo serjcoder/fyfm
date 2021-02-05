@@ -8,6 +8,9 @@ import Foundation
 
 class NetWorkDataFetcher {
     let networkService = NetworkService()
+    let lock = NSObject() //Object to lock on.
+    let dispatchGroup = DispatchGroup()
+    let session: URLSession = URLSession.shared
     
     func fetchTraks (urlString: String, responce: @escaping (FilmsListResponse?) -> Void) {
         networkService.request(urlString: urlString) { (result) in
@@ -27,12 +30,24 @@ class NetWorkDataFetcher {
             }
         }
     }
-    
-    func imageLoad(posterPath:String?) -> Data {
-        var posterPathUrl = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
-        if let optionlaPosterPath = posterPath   {
-            posterPathUrl = "https://image.tmdb.org/t/p/w500/" + optionlaPosterPath
+
+    func loadAllImages(images:[String])->Array<Data?> {
+        var counter = 0
+        var responseArray = Array<Data?>() //Array of responses.
+        print("loadAll in")
+        for image in images {
+            responseArray.append(nil)
+            dispatchGroup.enter()
+            session.dataTask(with: URLRequest(url: URL(string: image)!)) { (data, response, error) in
+                //Process Response..
+                synchronized(self.lock, closure: { () -> Void in
+                    responseArray[counter] = data ?? nil
+                })
+                self.dispatchGroup.leave() //Leave the group for the item task.
+                counter+=1
+            }.resume()
         }
-        return try! Data(contentsOf: URL(string: posterPathUrl)! )
+        dispatchGroup.wait()
+        return responseArray
     }
 }

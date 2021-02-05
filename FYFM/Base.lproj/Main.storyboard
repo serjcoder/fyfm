@@ -151,34 +151,16 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="topRated" id="Vni-5K-9B3">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="topRated" id="Vni-5K-9B3" customClass="CollectionViewCellHome" customModule="FYFM" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="XEF-fe-0WT">
                                                             <rect key="frame" x="0.0" y="0.0" width="157" height="200"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-hk-GBx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="Fwb-hk-GBx" secondAttribute="trailing" id="Bc4-3O-LUM"/>
-                                                                <constraint firstItem="Fwb-hk-GBx" firstAttribute="top" secondItem="XEF-fe-0WT" secondAttribute="top" id="BfD-5A-NS8"/>
-                                                                <constraint firstItem="Fwb-hk-GBx" firstAttribute="leading" secondItem="XEF-fe-0WT" secondAttribute="leading" id="bNH-fm-2eF"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Fwb-hk-GBx" secondAttribute="bottom" id="nCp-pH-aXq"/>
-                                                            </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="157" height="200"/>
-                                                        <connections>
-                                                            <outlet property="selectedBackgroundView" destination="Fwb-hk-GBx" id="dOM-pb-Oh8"/>
-                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="F9R-I7-v9M" id="D5K-hK-cfF"/>
-                                                    <outlet property="delegate" destination="F9R-I7-v9M" id="tRu-JZ-axe"/>
-                                                </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuy-0n-Nee">
                                                 <rect key="frame" x="0.0" y="254" width="414" height="50"/>
@@ -202,7 +184,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pEl-P6-R1z">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popular" id="pEl-P6-R1z" customClass="CollectionViewCellHome" customModule="FYFM" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rCx-3a-8TJ">
@@ -234,7 +216,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qaJ-OJ-eim">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="latest" id="qaJ-OJ-eim" customClass="CollectionViewCellHome" customModule="FYFM" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Gu-bK-0UU">
@@ -266,7 +248,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ee7-xU-fzr">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="nowPlaying" id="Ee7-xU-fzr" customClass="CollectionViewCellHome" customModule="FYFM" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NVl-8t-51q">
@@ -298,7 +280,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aH0-FF-gfV">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="upcoming" id="aH0-FF-gfV" customClass="CollectionViewCellHome" customModule="FYFM" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2rX-ph-Vze">
@@ -354,6 +336,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="OHA-QS-cVV"/>
+                    <connections>
+                        <outlet property="CollectionViewLastest" destination="SbL-Nd-6fc" id="k92-6x-fFe"/>
+                        <outlet property="CollectionViewNowPlaying" destination="y7S-OR-NGa" id="ifd-yu-gt1"/>
+                        <outlet property="CollectionViewPopular" destination="rbp-Sw-7St" id="aXp-iB-CwV"/>
+                        <outlet property="CollectionViewTopRated" destination="Cjm-6x-xmY" id="tIe-c4-2au"/>
+                        <outlet property="CollectionViewUpcoming" destination="tpv-7J-AsE" id="dcB-0O-zIq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKs-MT-1WL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
